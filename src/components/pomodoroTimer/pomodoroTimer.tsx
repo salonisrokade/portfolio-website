@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material'
+import { Box, Button, Grid, Typography } from '@mui/material'
 import { useEffect, useRef, useState } from 'react'
 
 export default function PomodoroTimer() {
@@ -27,7 +27,7 @@ export default function PomodoroTimer() {
   const formatTime = (seconds: number) => {
     return `${Math.floor(seconds / 60)
       .toString()
-      .padStart(2, '0')} : ${Math.floor(seconds % 60)
+      .padStart(2, '0')}:${Math.floor(seconds % 60)
       .toString()
       .padStart(2, '0')}`
   }
@@ -42,12 +42,15 @@ export default function PomodoroTimer() {
  
   return (
     <Box border={1} borderRadius={2} padding={2}>
-      <Typography textAlign={'left'} marginBottom={2}>Pomodoro Timer</Typography>
-      <div>{formatTime(targetTime)}</div>
-      <button onClick={handleResetTimer}>reset</button>
-      <button onClick={handlePauseTimer}>
-        {hasRun ? pauseTimer? 'resume' :'pause' : 'start' }
-      </button>
+      <Typography sx={{fontSize: '18px', fontWeight: 'bold'}} textAlign={'left'} marginBottom={2}>Pomodoro Timer</Typography>
+      <Typography sx={{fontSize: '85px', fontWeight: 'bold'}}>{formatTime(targetTime)}</Typography>
+      <Grid container spacing={1} display={'flex'} justifyContent={'center'}>
+        <Button variant={'contained'} size='small' onClick={handleResetTimer}>reset</Button>
+        <Button variant={'contained'} size='small' onClick={handlePauseTimer}>
+          {hasRun ? pauseTimer? 'resume' :'pause' : 'start' }
+        </Button>
+
+      </Grid>
     </Box>
   )
 }

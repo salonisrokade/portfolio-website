@@ -28,9 +28,10 @@ export default function Goals() {
   }
   return (
     <Box border={1} borderRadius={2} padding={2}>
-      <Typography textAlign={'left'} marginBottom={2}>
+      <Typography textAlign={'left'} marginBottom={2} sx={{fontSize: '18px', fontWeight: 'bold'}}>
         Goals
       </Typography>
+      <Box marginBottom={1}>
       <TextField
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
@@ -38,7 +39,7 @@ export default function Goals() {
         fullWidth
         size="small"
         placeholder="Add a new goal"
-      />
+      /></Box>
       <Box textAlign={'left'}>
         {goals.map((goal, index) => {
           return (
