@@ -3,7 +3,22 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../store'
 import { addGoal, updateGoal } from './duck/goalsSlice'
+import styled from '@emotion/styled'
 
+const CustomTextField = styled(TextField)({
+  '& .MuiInputBase-input': {
+    padding: '0.5rem 1.3rem',
+    borderRadius: '4px',
+    color: '#f1f1f1',
+    fontSize: '1rem',
+    cursor: 'pointer',
+    transition: '.3s ease',
+    border: '2px solid #202023',
+    '&.Mui-focused': {
+      border: '2px solid #353538',
+    },
+  },
+})
 export default function Goals() {
   const dispatch = useDispatch()
   const goals = useSelector((state: RootState) => state.goals.goalsList)
@@ -27,26 +42,26 @@ export default function Goals() {
     })
   }
   return (
-    <Box border={1} borderRadius={2} padding={2}>
-      <Typography textAlign={'left'} marginBottom={2} sx={{fontSize: '18px', fontWeight: 'bold'}}>
-        Goals
-      </Typography>
+    <Box className="card">
+      <p className="heading">Goals</p>
       <Box marginBottom={1}>
-      <TextField
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        onKeyDown={handleSubmit}
-        fullWidth
-        size="small"
-        placeholder="Add a new goal"
-      /></Box>
+        <CustomTextField
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          onKeyDown={handleSubmit}
+          fullWidth
+          size="small"
+          placeholder="Add a new goal"
+        />
+      </Box>
       <Box textAlign={'left'}>
         {goals.map((goal, index) => {
           return (
-            <div>
+            <div className="card highlight">
               <Checkbox
                 onClick={() => handleChecked(goal, index)}
                 size="small"
+                sx={{ color: '#f1f1f1' }}
               />
               <span
                 style={{

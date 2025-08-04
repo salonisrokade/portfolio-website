@@ -1,6 +1,33 @@
+import styled from '@emotion/styled'
 import { Box, Button, Grid, Typography } from '@mui/material'
 import { useEffect, useRef, useState } from 'react'
 
+const PrimaryButton = styled(Button)({
+  padding: '0.5rem 1.3rem',
+  borderRadius: '4px',
+  color: '#f1f1f1',
+  fontSize: '1rem',
+  cursor: 'pointer',
+  transition: '.3s ease',
+  backgroundColor: '#202023',
+  textTransform: 'capitalize',
+  '&:hover': {
+    backgroundColor: '#262629'
+  }
+})
+const SecondaryButton = styled(Button)({
+  padding: '0.5rem 1.3rem',
+  borderRadius: '4px',
+  color: '#f1f1f1',
+  fontSize: '1rem',
+  cursor: 'pointer',
+  transition: '.3s ease',
+  border:'1px solid #202023',
+  textTransform: 'capitalize',
+  '&:hover': {
+    borderColor: '#353538',
+  }
+})
 export default function PomodoroTimer() {
   const [targetTime, setTargetTime] = useState<number>(1500)
   const [pauseTimer, setPauseTimer] = useState<boolean>(false)
@@ -41,14 +68,14 @@ export default function PomodoroTimer() {
   }
  
   return (
-    <Box border={1} borderRadius={2} padding={2}>
-      <Typography sx={{fontSize: '18px', fontWeight: 'bold'}} textAlign={'left'} marginBottom={2}>Pomodoro Timer</Typography>
-      <Typography sx={{fontSize: '85px', fontWeight: 'bold'}}>{formatTime(targetTime)}</Typography>
+    <Box className='card'>
+      <p className='heading'>Pomodoro Timer</p>
+      <Typography sx={{fontSize: '85px', fontWeight: 'bold'}} textAlign={'center'}>{formatTime(targetTime)}</Typography>
       <Grid container spacing={1} display={'flex'} justifyContent={'center'}>
-        <Button variant={'contained'} size='small' onClick={handleResetTimer}>reset</Button>
-        <Button variant={'contained'} size='small' onClick={handlePauseTimer}>
+        <SecondaryButton size='small' onClick={handleResetTimer}>reset</SecondaryButton>
+        <PrimaryButton size='small' onClick={handlePauseTimer}>
           {hasRun ? pauseTimer? 'resume' :'pause' : 'start' }
-        </Button>
+        </PrimaryButton>
 
       </Grid>
     </Box>
