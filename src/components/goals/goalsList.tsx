@@ -54,25 +54,30 @@ export default function Goals() {
           placeholder="Add a new goal"
         />
       </Box>
-      <Box textAlign={'left'}>
-        {goals.map((goal, index) => {
-          return (
-            <div className="card highlight">
-              <Checkbox
-                onClick={() => handleChecked(goal, index)}
-                size="small"
-                sx={{ color: '#f1f1f1' }}
-              />
-              <span
-                style={{
-                  textDecorationLine: goal.checked ? 'line-through' : 'none',
-                }}
-              >
-                {goal.title}
-              </span>
-            </div>
-          )
-        })}
+      <Box textAlign={'left'} minHeight={'120px'} maxHeight={'120px'} textOverflow={'clip'}>
+        {
+          goals.length > 0 ? 
+          goals.map((goal, index) => {
+            return (
+              <div className="card highlight">
+                <Checkbox
+                  onClick={() => handleChecked(goal, index)}
+                  size="small"
+                  sx={{ color: '#f1f1f1' }}
+                />
+                <span
+                  style={{
+                    textDecorationLine: goal.checked ? 'line-through' : 'none',
+                  }}
+                >
+                  {goal.title}
+                </span>
+              </div>
+            )
+          }) :
+          <div className='card empty-container'>No goals added</div>
+        }
+        
       </Box>
     </Box>
   )

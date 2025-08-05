@@ -18,25 +18,30 @@ import muiImg from './assets/material-ui.svg'
 import reduxImg from './assets/redux.svg'
 import nextJsImg from './assets/nextjs.svg'
 import BasicTimeline, { TimelineData } from './components/timeline/timeline'
+import { ToastContainer } from 'react-toastify'
+import { useEffect } from 'react'
 
 function App() {
   const experience: TimelineData[] = [
-    {name: 'Arham Labs', content: 'Front End Developer'},
-    {name: 'Axioned.', content: 'Web Developer'},
+    {name: 'Arham Labs', content: 'Front End Developer', year: '2023'},
+    {name: 'Axioned.', content: 'Web Developer', year: '2019'},
   ]
   const education: TimelineData[] = [
-    {name: 'Mohawk College', content: 'Analytics for Business Decision Making'},
-    {name: 'University of Mumbai', content: 'B.E. in Information Technology'},
+    {name: 'Mohawk College', content: 'Analytics for Business Decision Making', year: '2025'},
+    {name: 'University of Mumbai', content: 'B.E. in Information Technology', year: '2019'},
   ]
+  useEffect(() =>{
+    console.log('id', window.location.hash)
+  })
   return (
     <div className="App">
       {/* Header Section */}
       <Box
+        className={'header'}
         display={'flex'}
         justifyContent={'space-between'}
         alignItems={'center'}
         boxShadow={1}
-        padding={'12px 20px'}
         marginBottom={4}
       >
         <h1 className="logo-title">
@@ -44,7 +49,7 @@ function App() {
         </h1>
         <nav>
           <li>
-            <a href="#about-me">
+            <a href="#home">
               <p>About Me</p>
             </a>
           </li>
@@ -66,8 +71,8 @@ function App() {
             </IconButton>
           </li>
           <li>
-            <IconButton sx={{ color: '#E0E0E0 ' }}>
-              <GitHub />
+            <IconButton href='https://github.com/salonisrokade/' target="blank" >
+              <GitHub sx={{ color: '#E0E0E0 ' }} />
             </IconButton>
           </li>
         </nav>
@@ -75,10 +80,13 @@ function App() {
       {/* Header Section Ends */}
       <div className="wrapper">
         {/* Banner Section */}
-        <div className="banner section" id="about-me">
+        <div className="banner section" id="home">
           <div className="content">
             <p className="title">
-              Hi, I'm Saloni - I build sleek, scalable frontend experiences.
+              Hi, I'm <span className='pink'>Saloni</span>✨
+            </p>
+            <p className="title">
+              I build sleek, scalable frontend experiences.
             </p>
             <p className="subtitle">
               Frontend Developer with 3+ experience in building performent web
@@ -87,8 +95,8 @@ function App() {
             </p>
           </div>
           <div className="buttons">
-            <a className="btn primary-btn">View my Work</a>
-            <a className="btn secondary-btn">Download Resume</a>
+            <a className="btn primary-btn" href='#projects'>View my Work</a>
+            <a className="btn secondary-btn" href={`${process.env.PUBLIC_URL}/Saloni-R-Resume.pdf`} target='blank'>Download Resume</a>
           </div>
         </div>
         {/* Banner Section Ends */}
@@ -97,6 +105,9 @@ function App() {
           <p className="section-title">Projects</p>
           <div className="project-tiles">
             <div className='card'>
+              <div className='image-container'>
+                <img src={`${process.env.PUBLIC_URL}/gray-institute.png`} alt="Gray Institute" />
+              </div>
               <p className="heading">Gray Institute</p>
               <p className="project-content">
                 Developed various platforms, migrated legacy code to modern
@@ -104,12 +115,18 @@ function App() {
               </p>
             </div>
             <div className='card'>
+              <div className='image-container'>
+                <img src="" alt="Admin Dashboard Img" />
+              </div>
               <p className="heading">Admin Dashboards</p>
               <p className="project-content">
                 Built dashboards for content management with Redux and React.js
               </p>
             </div>
             <div className='card'>
+              <div className='image-container'>
+                <img src="" alt="Personal Portfolio Img"/>
+              </div>
               <p className="heading">Personal Portfolio</p>
               <p className="project-content">
                 Created responsive portfolio with productivity tools using
@@ -169,6 +186,10 @@ function App() {
         </div>
         {/* Experience & Education Section Ends */}
       </div>
+      <footer>
+        <p>Developed by Saloni R</p>
+      </footer>
+      {/* <ToastContainer/> */}
     </div>
   )
 }

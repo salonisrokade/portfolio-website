@@ -7,16 +7,18 @@
   --text-secondary: #a9a9b3;
   --accent-color: #ffc107;
   --error-color: #ff6b6b;
-
+  --highlight-color: #ea4c89;
   /* Font Sizes */
   --text-title: 3.5rem;
   --text-subtitle: 1.3rem;
   --text-section-title: 1.8rem;
   --text-body: 1rem;
   --text-small: 0.875rem;
+
+  scroll-behavior: smooth;
 }
 .wrapper {
-  width: 86%;
+  width: 80%;
   margin: 0 auto;
 }
 body {
@@ -27,6 +29,9 @@ body {
 a {
   text-decoration: none;
   color: var(--text-primary);
+}
+.pink {
+  color: var(--highlight-color);
 }
 .title {
   margin-bottom: 16px;
@@ -45,33 +50,60 @@ a {
   font-weight: bold;
 }
 .logo-title {
+  padding: 0 1rem;
   color: var(--text-primary);
   font-size: var(--text-subtitle);
   font-weight: bold;
 }
+.header {
+  width: 100%;
+  padding: .8rem 0;
+  position: fixed;
+  top: 0;
+  background-color: var(--bg-color);
+  z-index: 100;
+}
 nav {
   width: 30%;
   max-width: 450px;
+  padding: 0 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   li {
     list-style-type: none;
   }
+  a {
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    transition: .3s ease-in;
+    &:hover, &:active{
+      border-bottom: 2px solid var(--highlight-color);
+    }
+  }
 }
 .section {
-  padding: 2rem 0;
+  padding: 80px 0 .5rem;
 }
 .banner {
-  width: 50%;
+  width: 60%;
+  padding: 10rem 0 6rem;
   .content {
     margin-bottom: 32px;
   }
   .buttons {
     width: 52%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+  }
+}
+.image-container {
+  max-height: 200px;
+  min-height: 200px;
+  img {
+    width: 100%;
+    margin-bottom: 1rem;
   }
 }
 .btn {
@@ -95,7 +127,7 @@ nav {
   }
 }
 .card, .highlight {
-  padding: 0.5rem 1.3rem;
+  padding: 1rem 1.3rem;
   border-radius: .6rem;
   background-color: var(--surface-color-dark);
 }
@@ -103,6 +135,12 @@ nav {
   margin-bottom: .5rem;
   padding: 0.2rem 0.4rem;
   background-color: var(--surface-color);
+}
+.empty-container {
+  padding: 3rem;
+  background-color: var(--surface-color);
+  color: var(--text-secondary);
+  text-align: center;
 }
 .projects {
   .project-tiles {
@@ -141,7 +179,14 @@ nav {
     //  box-shadow: 0 0 20px rgba(0, 255, 255, 0.7)
   }
 }
-
+footer {
+  padding: 2rem 1rem;
+  border-top: 1px solid var(--surface-color);
+  p {
+    font-size: var(--text-small);
+    color: var(--text-secondary);
+  }
+}
 
 @media (prefers-color-scheme: dark) {
 }

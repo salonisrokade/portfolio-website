@@ -1,6 +1,8 @@
 import styled from '@emotion/styled'
 import { Box, Button, Grid, Typography } from '@mui/material'
 import { useEffect, useRef, useState } from 'react'
+import { toast, ToastContainer } from 'react-toastify'
+import ToastMsgContainer from '../ToastMsg/toastContainer'
 
 const PrimaryButton = styled(Button)({
   padding: '0.5rem 1.3rem',
@@ -29,15 +31,27 @@ const SecondaryButton = styled(Button)({
   }
 })
 export default function PomodoroTimer() {
-  const [targetTime, setTargetTime] = useState<number>(1500)
+  const [targetTime, setTargetTime] = useState<number>(5)
   const [pauseTimer, setPauseTimer] = useState<boolean>(false)
   const [hasRun, setHasRun] = useState<boolean>(false)
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
+  const [isTimerCompleted, setIsTimerCompleted] = useState<boolean>(false)
 
   useEffect(() => {
-    if (!pauseTimer && hasRun) {
+    if (!pauseTimer && hasRun && targetTime > 0) {
       intervalRef.current = setInterval(() => {
-        setTargetTime((prev) => prev - 1)
+        setTargetTime((prev) => {
+          if(prev <= 1){
+            clearInterval(intervalRef.current!);
+            handleResetTimer()
+            if (!isTimerCompleted) {
+              toast("⏰ Pomodoro complete! Take a break.")
+              setIsTimerCompleted(true)
+            }
+            return 0
+          }
+          return prev - 1
+        })
       }, 1000)
     } else {
       if (intervalRef.current) {
@@ -59,9 +73,10 @@ export default function PomodoroTimer() {
       .padStart(2, '0')}`
   }
   const handleResetTimer = () => {
-    setTargetTime(1500)
+    setTargetTime(targetTime)
     setHasRun(false)
     setPauseTimer(false)
+    setIsTimerCompleted(false)
   }
   const handlePauseTimer = () => {
     hasRun ? setPauseTimer((prev) => !prev) : setHasRun(true)
@@ -76,8 +91,8 @@ export default function PomodoroTimer() {
         <PrimaryButton size='small' onClick={handlePauseTimer}>
           {hasRun ? pauseTimer? 'resume' :'pause' : 'start' }
         </PrimaryButton>
-
       </Grid>
+      <ToastMsgContainer/>
     </Box>
   )
 }

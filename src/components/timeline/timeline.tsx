@@ -6,24 +6,35 @@ import {
   TimelineConnector,
   TimelineContent,
   TimelineDot,
+  TimelineOppositeContent,
+  timelineOppositeContentClasses,
 } from '@mui/lab'
 import { Typography } from '@mui/material'
 
 export interface TimelineData {
   name: string;
   content: string;
+  year: string;
 }
 interface TimelineListProps {
   data: TimelineData[]; // Array of User objects
 }
 const BasicTimeline: React.FC<TimelineListProps> =({data}) => {
   return (
-    <Timeline>
+    <Timeline
+    sx={{
+        [`& .${timelineOppositeContentClasses.root}`]: {
+          flex: 0.2,
+        },
+      }}>
         { data.map((item) => {
             return (
                 <TimelineItem>
+                  <TimelineOppositeContent>
+                  {item.year}
+                  </TimelineOppositeContent>
                     <TimelineSeparator>
-                    <TimelineDot />
+                    <TimelineDot sx={{backgroundColor: '#ea4c89'}}/>
                     <TimelineConnector />
                     </TimelineSeparator>
                     <TimelineContent>
