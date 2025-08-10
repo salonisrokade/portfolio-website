@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { Box, Button, Grid, Typography } from '@mui/material'
 import { useEffect, useRef, useState } from 'react'
 import { toast, ToastContainer } from 'react-toastify'
-import ToastMsgContainer from '../ToastMsg/toastContainer'
+import ToastMsgContainer from '../ToastMsg'
 
 const PrimaryButton = styled(Button)({
   padding: '0.5rem 1.3rem',
@@ -31,7 +31,7 @@ const SecondaryButton = styled(Button)({
   }
 })
 export default function PomodoroTimer() {
-  const [targetTime, setTargetTime] = useState<number>(5)
+  const [targetTime, setTargetTime] = useState<number>(1500)
   const [pauseTimer, setPauseTimer] = useState<boolean>(false)
   const [hasRun, setHasRun] = useState<boolean>(false)
   const intervalRef = useRef<NodeJS.Timeout | null>(null)

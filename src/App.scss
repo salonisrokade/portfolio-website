@@ -1,3 +1,4 @@
+$tablet: 830px;
 :root {
   /* colors */
   --bg-color: #0e0e10;
@@ -5,7 +6,7 @@
   --surface-color-dark: #161618;
   --text-primary: #f1f1f1;
   --text-secondary: #a9a9b3;
-  --accent-color: #ffc107;
+  --accent-color: #fef484;
   --error-color: #ff6b6b;
   --highlight-color: #ea4c89;
   /* Font Sizes */
@@ -14,12 +15,23 @@
   --text-section-title: 1.8rem;
   --text-body: 1rem;
   --text-small: 0.875rem;
-
   scroll-behavior: smooth;
+}
+@media screen and (max-width: $tablet) {
+  :root {
+    --text-title: 2.5rem;
+    --text-subtitle: 0.9rem;
+    --text-section-title: 1.5rem;
+    --text-body: 0.8rem;
+    --text-small: 0.5rem;
+  }
 }
 .wrapper {
   width: 80%;
   margin: 0 auto;
+  @media screen and (max-width: $tablet) {
+    width: 90%;
+  }
 }
 body {
   background-color: var(--bg-color);
@@ -30,24 +42,41 @@ a {
   text-decoration: none;
   color: var(--text-primary);
 }
+img {
+  width: 100%;
+}
 .pink {
   color: var(--highlight-color);
 }
-.title {
+.title,
+.title-small {
   margin-bottom: 16px;
   line-height: 4rem;
   font-size: var(--text-title);
   font-weight: bold;
+  @media screen and (max-width: $tablet) {
+    line-height: 3rem;
+  }
+}
+.title-small {
+  font-size: var(--text-section-title);
 }
 .subtitle {
+  margin-bottom: 1rem;
   font-size: var(--text-subtitle);
   color: var(--text-secondary);
   line-height: 1.7rem;
+  @media screen and (max-width: $tablet) {
+    line-height: 1.3rem;
+  }
 }
 .section-title {
-  margin-bottom: 1.8rem;
+  margin-bottom: 1rem;
   font-size: var(--text-section-title);
   font-weight: bold;
+  // letter-spacing: 3px;
+  // color: var(--accent-color);
+  // text-transform: uppercase;
 }
 .logo-title {
   padding: 0 1rem;
@@ -57,62 +86,97 @@ a {
 }
 .header {
   width: 100%;
-  padding: .8rem 0;
+  border-bottom: 1px solid rgb(255 255 255 / 5%);
+  padding: 1.5rem 0;
   position: fixed;
   top: 0;
   background-color: var(--bg-color);
   z-index: 100;
 }
 nav {
-  width: 30%;
+  width: 50%;
   max-width: 450px;
-  padding: 0 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 0 3rem;
+  @media screen and (max-width: $tablet) {
+    width: fit-content;
+    padding: 0;
+  }
+  .nav-links {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    @media screen and (max-width: $tablet) {
+      display: none;
+    }
+  }
   li {
     list-style-type: none;
+    margin-left: 2rem;
   }
   a {
     padding-bottom: 4px;
     border-bottom: 2px solid transparent;
-    transition: .3s ease-in;
-    &:hover, &:active{
+    transition: 0.3s ease-in;
+    &:hover,
+    &:active {
       border-bottom: 2px solid var(--highlight-color);
+    }
+  }
+
+  .hamburger-menu {
+    display: none;
+    @media screen and (max-width: $tablet) {
+      display: block;
     }
   }
 }
 .section {
-  padding: 80px 0 .5rem;
+  padding: 80px 0 0.5rem;
 }
 .banner {
-  width: 60%;
-  padding: 10rem 0 6rem;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  background: radial-gradient(
+    45% 55% at 100% 100%,
+    var(--highlight-color) 0%,
+    var(--bg-color) 100%
+  );
+  @media screen and (max-width: $tablet) {
+    width: 100%;
+  }
   .content {
     margin-bottom: 32px;
+    flex-wrap: wrap-reverse;
+    @media screen and (max-width: $tablet) {
+      margin-bottom: 16px;
+      flex-wrap: wrap-reverse;
+    }
   }
   .buttons {
-    width: 52%;
     display: flex;
-    justify-content: space-around;
     align-items: center;
+    @media screen and (max-width: $tablet) {
+      width: 100%;
+    }
   }
 }
 .image-container {
   max-height: 200px;
-  min-height: 200px;
   img {
     width: 100%;
     margin-bottom: 1rem;
   }
 }
 .btn {
-  padding: 0.8rem 1.3rem;
+  padding: 0.8rem 0.8rem 0.8rem 0.6rem;
+  margin-right: 14px;
   border-radius: 4px;
   color: var(--text-primary);
   font-size: var(--text-body);
   cursor: pointer;
-  transition: .3s ease;
+  transition: 0.3s ease;
 }
 .primary-btn {
   background-color: var(--surface-color);
@@ -123,16 +187,33 @@ nav {
 .secondary-btn {
   border: 1px solid var(--surface-color);
   &:hover {
-    border-color: #353538
+    border-color: #353538;
   }
 }
-.card, .highlight {
+.emoji-container {
+  width: 350px;
+  height: 350px;
+  margin: 0 auto;
+  background-color: #ffa7c9;
+  border-radius: 100%;
+  border: 0.6rem solid var(--highlight-color);
+  background-image: url('../public/saloni-r.png');
+  background-size: cover;
+  background-position: center;
+  @media screen and (max-width: $tablet) {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+  }
+}
+.card,
+.highlight {
   padding: 1rem 1.3rem;
-  border-radius: .6rem;
+  border-radius: 0.6rem;
   background-color: var(--surface-color-dark);
 }
 .highlight {
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   padding: 0.2rem 0.4rem;
   background-color: var(--surface-color);
 }
@@ -146,37 +227,54 @@ nav {
   .project-tiles {
     display: flex;
     justify-content: space-around;
+    @media screen and (max-width: $tablet) {
+      flex-wrap: wrap;
+    }
   }
   .card {
     width: 33%;
-    margin: .8rem;
+    margin: 0.8rem;
+    @media screen and (max-width: $tablet) {
+      width: 100%;
+    }
   }
 }
-  .heading {
-    font-size: 1.3rem;
-    margin-bottom: .8rem;
+.heading {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  @media screen and (max-width: $tablet) {
+    font-size: 1rem;
   }
-  .skills-images div {
-    width: 100%;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
+}
+.skills-images div {
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  @media screen and (max-width: $tablet) {
+    flex-wrap: wrap;
   }
+}
 .large-img {
-    width: 110px;
-    height: 110px;
+  width: 110px;
+  height: 110px;
 }
 .small-img {
-    width: 70px;
-    height: 70px;
+  width: 70px;
+  height: 70px;
 }
-.large-img, .small-img {
-  margin: 0 .2rem;
-  transition: .3s ease-in-out;
+.large-img,
+.small-img {
+  margin: 0 0.2rem;
+  transition: 0.3s ease-in-out;
   border-radius: 100%;
   &:hover {
     cursor: pointer;
     //  box-shadow: 0 0 20px rgba(0, 255, 255, 0.7)
+  }
+  @media screen and (max-width: $tablet) {
+    width: 50px;
+    height: 50px;
   }
 }
 footer {
@@ -186,7 +284,4 @@ footer {
     font-size: var(--text-small);
     color: var(--text-secondary);
   }
-}
-
-@media (prefers-color-scheme: dark) {
 }
