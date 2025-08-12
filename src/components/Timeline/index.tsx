@@ -10,16 +10,15 @@ import {
   timelineOppositeContentClasses,
 } from '@mui/lab'
 import { Typography } from '@mui/material'
-
 export interface TimelineData {
   name: string;
   content: string;
   year: string;
 }
 interface TimelineListProps {
-  data: TimelineData[]; // Array of User objects
+  data: TimelineData[]; // Array of Timeline item objects
 }
-const BasicTimeline: React.FC<TimelineListProps> =({data}) => {
+const BasicTimeline = ({data}: TimelineListProps) => {
   return (
     <Timeline
     sx={{

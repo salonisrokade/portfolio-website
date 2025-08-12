@@ -23,10 +23,10 @@ export default function Nav() {
       name: 'Projects',
       link: '#projects',
     },
-    {
-      name: 'Playground',
-      link: '#playground',
-    },
+    // {
+    //   name: 'Playground',
+    //   link: '#playground',
+    // },
     {
       name: 'Skills',
       link: '#skills',

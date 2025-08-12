@@ -1,8 +1,8 @@
-import { Box, Grid, IconButton, Button, Tooltip } from '@mui/material'
+import { Box, Grid, IconButton, Button, Tooltip, Chip } from '@mui/material'
 import './App.scss'
 import Goals from './components/goals'
 import PomodoroTimer from './components/PomodoroTimer'
-import { GitHub, LinkedIn } from '@mui/icons-material'
+import { Email, EmailOutlined, ExpandMore, GitHub, Launch, LinkedIn, LinkOff } from '@mui/icons-material'
 import jsImg from './assets/js.svg'
 import cssImg from './assets/css.svg'
 import figmaImg from './assets/figma.svg'
@@ -24,6 +24,8 @@ import EnterAnimation from './components/EnterAnimation'
 import Nav from './components/Nav'
 import codingAnimation from './assets/coding-lottie.json'
 import Lottie from 'lottie-react'
+import Pill from './components/Chips'
+import { SecondaryButton } from './components/Buttons'
 
 function App() {
   const experience: TimelineData[] = [
@@ -96,6 +98,7 @@ function App() {
               </Grid>
             </Grid>
           </EnterAnimation>
+            <div className="arrow"><ExpandMore sx={{fontSize: '2.5rem'}}/></div>
         </div>
       </div>
       {/* Banner Section Ends */}
@@ -112,11 +115,25 @@ function App() {
                     alt="Gray Institute"
                   />
                 </div>
-                <p className="heading">Gray Institute</p>
-                <p className="project-content">
-                  Developed various platforms, migrated legacy code to modern
-                  React
-                </p>
+                <div className="content-container">
+                  <p className="heading">Gray Institute</p>
+                  <div className="stack-pills">
+                    <Pill label="React" />
+                    <Pill label="Axios" />
+                    <Pill label="MUI" />
+                  </div>
+                  <p className="project-content">
+                    Developed various platforms, migrated legacy code to modern
+                    React
+                  </p>
+                  <a
+                    className="btn small-btn secondary-btn"
+                    href="https://www.grayinstitute.com/"
+                    target="blank"
+                  >
+                    <Launch sx={{ fontSize: '1rem', marginRight: '4px' }} /> Visit Website
+                  </a>
+                </div>
               </div>
               <div className="card">
                 <div className="image-container">
@@ -125,11 +142,19 @@ function App() {
                     alt="Admin Dashboard Mockup"
                   />
                 </div>
-                <p className="heading">Admin Dashboards</p>
-                <p className="project-content">
-                  Built dashboards for content management with Redux and
-                  React.js
-                </p>
+                <div className="content-container">
+                  <p className="heading">Admin Dashboards</p>
+                  <div className="stack-pills">
+                    <Pill label="React" />
+                    <Pill label="NextJs" />
+                    <Pill label="Redux Form" />
+                    <Pill label="Tailwind CSS" />
+                  </div>
+                  <p className="project-content">
+                    Built dashboards for content management with Redux and
+                    React.js
+                  </p>
+                </div>
               </div>
               <div className="card">
                 <div className="image-container">
@@ -138,34 +163,31 @@ function App() {
                     alt="Personal Portfolio Website"
                   />
                 </div>
-                <p className="heading">Personal Portfolio</p>
-                <p className="project-content">
-                  Created responsive portfolio with productivity tools using
-                  React.js and TypeScript
-                </p>
+                <div className="content-container">
+                  <p className="heading">Personal Portfolio</p>
+                  <div className="stack-pills">
+                    <Pill label="React" />
+                    <Pill label="TypeScript" />
+                    <Pill label="MUI" />
+                  </div>
+                  <p className="project-content">
+                    Created responsive portfolio with productivity tools using
+                    React.js and TypeScript
+                  </p>
+                  <a
+                    className="btn small-btn secondary-btn"
+                    href="https://github.com/salonisrokade/portfolio-website"
+                    target="blank"
+                  >
+                    <GitHub sx={{ fontSize: '1rem', marginRight: '4px' }} /> View Code
+                  </a>
+                </div>
               </div>
             </div>
           </EnterAnimation>
         </div>
       </div>
       {/* Projects Section Ends */}
-      {/* Playground Section */}
-      <div id="playground" className="section">
-        <div className="wrapper">
-          <EnterAnimation>
-            <p className="section-title">Playground</p>
-            <Grid container spacing={2}>
-              <Grid size={{ xs: 12, md: 8 }}>
-                <Goals />
-              </Grid>
-              <Grid size={{ xs: 12, md: 4 }}>
-                <PomodoroTimer />
-              </Grid>
-            </Grid>
-          </EnterAnimation>
-        </div>
-      </div>
-      {/* Playground Section Ends */}
       {/* Skills Section */}
       <div id="skills" className="section">
         <div className="wrapper">
@@ -248,7 +270,15 @@ function App() {
       {/* Experience & Education Section Ends */}
       {/* </div> */}
       <footer>
-        <p>Developed by Saloni R</p>
+        <div>
+        <p>Built with love by <strong>Saloni R</strong> 🩷</p>
+        <span>© 2025 Saloni Rokade. All rights reserved.</span>
+        </div>
+        <div>
+          <a href="http://www.linkedin.com/in/saloni-r/" target="_blank" rel="noopener noreferrer"><LinkedIn/></a>
+          <a href="https://github.com/salonisrokade" target="_blank" rel="noopener noreferrer"><GitHub/></a>
+          <a href="mailto:salonirokade119@gmail.com"><EmailOutlined/></a>
+        </div>
       </footer>
       {/* <ToastContainer/> */}
     </div>

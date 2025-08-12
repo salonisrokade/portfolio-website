@@ -54,7 +54,7 @@ export default function Goals() {
           placeholder="Add a new goal"
         />
       </Box>
-      <Box textAlign={'left'} minHeight={'120px'} maxHeight={'120px'} textOverflow={'clip'}>
+      <Box textAlign={'left'} minHeight={'120px'} maxHeight={'200px'} marginTop={'10px'} marginBottom={'10px'} textOverflow={'clip'}>
         {
           goals.length > 0 ? 
           goals.map((goal, index) => {
@@ -77,8 +77,10 @@ export default function Goals() {
           }) :
           <div className='card empty-container'>No goals added</div>
         }
-        
       </Box>
+      <div>
+        { goals.length > 3 ? <a href='#'>See all goals</a> : null}
+      </div>
     </Box>
   )
 }
