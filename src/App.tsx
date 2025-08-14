@@ -47,6 +47,7 @@ function App() {
   return (
     <div className="App">
       {/* Header Section */}
+      <header>
       <Box
         className={'header'}
         display={'flex'}
@@ -62,9 +63,10 @@ function App() {
         </h1>
         <Nav />
       </Box>
+      </header>
       {/* Header Section Ends */}
       {/* Banner Section */}
-      <div className="banner section" id="home">
+      <section className="banner section" id="home">
         <div className="wrapper">
           <EnterAnimation>
             <Grid container spacing={4} className="content">
@@ -100,10 +102,10 @@ function App() {
           </EnterAnimation>
             <div className="arrow"><ExpandMore sx={{fontSize: '2.5rem'}}/></div>
         </div>
-      </div>
+      </section>
       {/* Banner Section Ends */}
       {/* Projects Section */}
-      <div id="projects" className="projects section">
+      <section id="projects" className="projects section">
         <div className="wrapper">
           <EnterAnimation>
             <p className="section-title">Projects</p>
@@ -186,10 +188,10 @@ function App() {
             </div>
           </EnterAnimation>
         </div>
-      </div>
+      </section>
       {/* Projects Section Ends */}
       {/* Skills Section */}
-      <div id="skills" className="section">
+      <section id="skills" className="section">
         <div className="wrapper">
           <EnterAnimation>
             <p className="section-title">Skills</p>
@@ -248,10 +250,10 @@ function App() {
             </div>
           </EnterAnimation>
         </div>
-      </div>
+      </section>
       {/* Skills Section Ends */}
       {/* Experience & Education Section */}
-      <div className="section">
+      <section className="section">
         <div className="wrapper">
           <EnterAnimation>
             <Grid container spacing={2}>
@@ -266,7 +268,7 @@ function App() {
             </Grid>
           </EnterAnimation>
         </div>
-      </div>
+      </section>
       {/* Experience & Education Section Ends */}
       {/* </div> */}
       <footer>
