@@ -27,6 +27,7 @@ import codingAnimation from './assets/coding-lottie.json'
 import Lottie from 'lottie-react'
 import Pill from './components/Chips'
 import CustomTooltip from './components/Tooltip'
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 function App() {
   const experience: TimelineData[] = [
@@ -347,7 +348,7 @@ function App() {
           </a>
         </div>
       </footer>
-      {/* <ToastContainer/> */}
+      <SpeedInsights/>
     </div>
   )
 }
