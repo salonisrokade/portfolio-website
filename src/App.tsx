@@ -1,15 +1,11 @@
-import { Box, Grid, IconButton, Button, Tooltip, Chip } from '@mui/material'
+import { Box, Grid } from '@mui/material'
 import './App.scss'
-import Goals from './components/goals'
-import PomodoroTimer from './components/PomodoroTimer'
 import {
-  Email,
   EmailOutlined,
   ExpandMore,
   GitHub,
   Launch,
   LinkedIn,
-  LinkOff,
 } from '@mui/icons-material'
 import jsImg from './assets/js.svg'
 import cssImg from './assets/css.svg'
@@ -17,7 +13,6 @@ import figmaImg from './assets/figma.svg'
 import htmlImg from './assets/html.svg'
 import reactJsImg from './assets/reactjs.svg'
 import sassImg from './assets/sass.svg'
-import eslintImg from './assets/eslint.svg'
 import typescriptImg from './assets/typescript.svg'
 import githubImg from './assets/github.svg'
 import netlifyImg from './assets/netlify.svg'
@@ -122,7 +117,7 @@ function App() {
       </section>
       {/* Banner Section Ends */}
       {/* About Me Section */}
-      <div className="about-me section" id="about-me">
+      <section className="about-me section" id="about-me">
         <div className="wrapper">
           <p className="section-title">About Me</p>
           <Grid
@@ -152,7 +147,7 @@ function App() {
             </Grid>
           </Grid>
         </div>
-      </div>
+      </section>
       {/* About Me Section Ends */}
       {/* Projects Section */}
       <section id="projects" className="projects section">
@@ -332,7 +327,7 @@ function App() {
           </p>
           <span>© 2025 Saloni Rokade. All rights reserved.</span>
         </div>
-        <div>
+          <div>
           <a
             href="http://www.linkedin.com/in/saloni-r/"
             target="_blank"

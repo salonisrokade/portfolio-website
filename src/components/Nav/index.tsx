@@ -1,6 +1,5 @@
 import * as React from 'react'
-import { GitHub, LinkedIn } from '@mui/icons-material'
-import { Box, Button, createTheme, Drawer, IconButton, List, ListItem, ListItemButton, ListItemText, ThemeProvider } from '@mui/material'
+import { Box, Button, createTheme, Drawer, List, ListItemButton, ThemeProvider } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
 
 const darkTheme = createTheme({

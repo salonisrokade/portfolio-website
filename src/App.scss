@@ -19,7 +19,7 @@ $tablet: 830px;
 }
 @media screen and (max-width: $tablet) {
   :root {
-    --text-title: 2.5rem;
+    --text-title: 2rem;
     --text-subtitle: 0.9rem;
     --text-section-title: 1.5rem;
     --text-body: 0.8rem;
@@ -58,7 +58,7 @@ img {
   font-size: var(--text-title);
   font-weight: bold;
   @media screen and (max-width: $tablet) {
-    line-height: 3rem;
+    line-height: 2.5rem;
   }
 }
 .title-small {
@@ -77,9 +77,6 @@ img {
   margin-bottom: 1rem;
   font-size: var(--text-section-title);
   font-weight: bold;
-  // letter-spacing: 3px;
-  // color: var(--accent-color);
-  // text-transform: uppercase;
 }
 .logo-title {
   padding: 0 1rem;
@@ -95,6 +92,7 @@ img {
   top: 0;
   background-color: var(--bg-color);
   z-index: 100;
+  @media screen and (max-width: $tablet) { padding: .5rem 0; }
 }
 nav {
   width: 50%;
@@ -133,7 +131,7 @@ nav {
     }
   }
 }
-.section {
+section {
   padding: 80px 0 0.5rem;
   &:last-of-type {
     padding: 80px 0;
@@ -195,6 +193,7 @@ nav {
 }
 .image-container {
   max-height: 200px;
+  @media screen and (max-width: $tablet) { max-height: none};
   img {
     width: 100%;
     border-radius: 0.6rem 0.6rem 0 0
@@ -217,11 +216,21 @@ nav {
   &:hover {
     background-color: #262629;
   }
+  @media screen and (max-width: $tablet) {
+    &:hover {
+      background-color: var(--surface-color);
+    }
+  }
 }
 .secondary-btn {
   border: 1px solid var(--surface-color);
   &:hover {
     border-color: #353538;
+  }
+  @media screen and (max-width: $tablet) {
+    &:hover {
+      background-color: var(--surface-color);
+    }
   }
 }
 .small-btn {
@@ -324,6 +333,12 @@ nav {
     }
     @media screen and (max-width: $tablet) {
       width: 100%;
+      &:hover {
+        box-shadow: none;
+        border: 3px solid transparent;
+        transform: scale(1);
+        transform: translateY(0);
+      }
     }
   }
   .content-container{
@@ -393,13 +408,13 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  p {
-    font-size: var(--text-small);
-    color: var(--text-secondary);
-  }
   span {
-    font-size: 12px;
+    font-size: var(--text-small);
     color: gray;
+  }
+  p {
+    font-size: 12px;
+    color: var(--text-secondary);
   }
   a {
     margin-left: 18px;
