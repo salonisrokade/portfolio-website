@@ -27,7 +27,7 @@ $tablet: 830px;
   }
 }
 .wrapper {
-  width: 80%;
+  width: 77%;
   margin: 0 auto;
   @media screen and (max-width: $tablet) {
     width: 90%;
@@ -44,6 +44,9 @@ a {
 }
 img {
   width: 100%;
+}
+.rounded-border {
+  border-radius: 4px;
 }
 .pink {
   color: var(--highlight-color);
@@ -132,6 +135,9 @@ nav {
 }
 .section {
   padding: 80px 0 0.5rem;
+  &:last-of-type {
+    padding: 80px 0;
+  }
 }
 .banner {
   height: 100vh;
@@ -244,6 +250,37 @@ nav {
     margin: 0 auto;
   }
 }
+@keyframes imageChange {
+  0% { 
+    background-image: url('../public/saloni-r-working.png');
+  }
+  50% { 
+    background-image: url('../public/saloni-r-thumbs-up.png');
+  }
+  100% { background-image: url('../public/saloni-r-working.png');}
+}
+.about-me {
+  .media { position:relative}
+  .content p {
+    margin-bottom: 1rem;
+    font-size: var(--text-subtitle);
+    color: var(--text-primary);
+    line-height: 1.7rem;
+    @media screen and (max-width: $tablet) {
+      line-height: 1.3rem;
+    }
+  }
+  .emoji-container {
+    width: 150px;
+    height: 150px;
+    border: 0.3rem solid var(--highlight-color);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+    animation: imageChange 4s infinite cubic-bezier(.68,-0.55,.27,1.55);
+  }
+}
 .card,
 .highlight {
   padding: 1rem 1.3rem;
@@ -338,6 +375,16 @@ nav {
     width: 50px;
     height: 50px;
   }
+}
+.position {
+  color: var(--text-secondary);
+  font-style: italic;
+  font-size: var(--text-body);
+  font-weight: 400;
+}
+.download-link {
+  font-weight: bold;
+  text-decoration: underline;
 }
 footer {
   padding: 2rem 1rem;

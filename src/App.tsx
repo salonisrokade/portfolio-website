@@ -2,7 +2,15 @@ import { Box, Grid, IconButton, Button, Tooltip, Chip } from '@mui/material'
 import './App.scss'
 import Goals from './components/goals'
 import PomodoroTimer from './components/PomodoroTimer'
-import { Email, EmailOutlined, ExpandMore, GitHub, Launch, LinkedIn, LinkOff } from '@mui/icons-material'
+import {
+  Email,
+  EmailOutlined,
+  ExpandMore,
+  GitHub,
+  Launch,
+  LinkedIn,
+  LinkOff,
+} from '@mui/icons-material'
 import jsImg from './assets/js.svg'
 import cssImg from './assets/css.svg'
 import figmaImg from './assets/figma.svg'
@@ -18,51 +26,65 @@ import muiImg from './assets/material-ui.svg'
 import reduxImg from './assets/redux.svg'
 import nextJsImg from './assets/nextjs.svg'
 import BasicTimeline, { TimelineData } from './components/Timeline'
-import { ToastContainer } from 'react-toastify'
-import { useEffect } from 'react'
 import EnterAnimation from './components/EnterAnimation'
 import Nav from './components/Nav'
 import codingAnimation from './assets/coding-lottie.json'
 import Lottie from 'lottie-react'
 import Pill from './components/Chips'
-import { SecondaryButton } from './components/Buttons'
+import CustomTooltip from './components/Tooltip'
 
 function App() {
   const experience: TimelineData[] = [
-    { name: 'Arham Labs', content: 'Front End Developer', year: '2023' },
-    { name: 'Axioned.', content: 'Web Developer', year: '2019' },
-  ]
-  const education: TimelineData[] = [
+    // {
+    //   name: 'Mohawk College',
+    //   position: 'Student',
+    //   content: 'Analytics for Business Decision Making',
+    //   year: '2025',
+    //   imageUrl: ''
+    // },
     {
-      name: 'Mohawk College',
-      content: 'Analytics for Business Decision Making',
-      year: '2025',
+      name: 'Arham Labs',
+      position: 'Front End Developer',
+      content:
+        'I spent 3 years building dashboards, websites, and LMS platforms with React. One of my favorite challenges was modernizing a huge legacy codebase into clean, functional React components, making apps faster and the team’s life easier. I also built reusable component libraries, worked with designers in Figma, and helped roll out features using CI/CD pipelines and AWS.',
+      year: '2023',
+      imageUrl: '/arham-labs.webp',
     },
     {
-      name: 'University of Mumbai',
-      content: 'B.E. in Information Technology',
+      name: 'Axioned.',
+      position: 'Web Developer',
+      content:
+        'My first step into professional dev work! I learned the foundations of building accessible SPAs, reusable components, and the rhythm of Agile teamwork. It taught me the value of collaboration and writing code that truly puts the user first.',
       year: '2019',
+      imageUrl: '/axioned.webp',
     },
+    // {
+    //   name: 'University of Mumbai',
+    //   position: 'Student',
+    //   content: 'B.E. in Information Technology',
+    //   year: '2019',
+    //   imageUrl: ''
+    // },
   ]
   return (
     <div className="App">
       {/* Header Section */}
       <header>
-      <Box
-        className={'header'}
-        display={'flex'}
-        justifyContent={'space-between'}
-        alignItems={'center'}
-        boxShadow={1}
-        marginBottom={4}
-      >
-        <h1 className="logo-title">
-          <a href="#home">
-            {'</'}Saloni{'>'}
-          </a>
-        </h1>
-        <Nav />
-      </Box>
+        <Box
+          className={'header'}
+          display={'flex'}
+          justifyContent={'space-between'}
+          alignItems={'center'}
+          boxShadow={1}
+          marginBottom={4}
+        >
+          <h1 className="logo-title">
+            <a href="#home">
+              {'</'}Saloni{'>'}
+            </a>
+          </h1>
+          <Nav />
+        </Box>
       </header>
       {/* Header Section Ends */}
       {/* Banner Section */}
@@ -86,13 +108,6 @@ function App() {
                   <a className="btn primary-btn" href="#projects">
                     🔍 View my Work
                   </a>
-                  <a
-                    className="btn secondary-btn"
-                    href={`${process.env.PUBLIC_URL}/Saloni-R-Resume.pdf`}
-                    target="blank"
-                  >
-                    📄 Download Resume
-                  </a>
                 </div>
               </Grid>
               <Grid size={{ xs: 12, md: 4 }}>
@@ -100,10 +115,45 @@ function App() {
               </Grid>
             </Grid>
           </EnterAnimation>
-            <div className="arrow"><ExpandMore sx={{fontSize: '2.5rem'}}/></div>
+          <div className="arrow">
+            <ExpandMore sx={{ fontSize: '2.5rem' }} />
+          </div>
         </div>
       </section>
       {/* Banner Section Ends */}
+      {/* About Me Section */}
+      <div className="about-me section" id="about-me">
+        <div className="wrapper">
+          <p className="section-title">About Me</p>
+          <Grid
+            container
+            spacing={2}
+            justifyContent={'space-around'}
+            alignItems={'center'}
+          >
+            <Grid className="media" size={{ xs: 12, md: 4 }}>
+              <Lottie autoplay loop animationData={codingAnimation} />
+              <div className="emoji-container about-me-emoji"></div>
+            </Grid>
+            <Grid className="content" size={{ xs: 12, md: 7 }}>
+              <p>
+                I’m a frontend developer who turns ideas into sleek,
+                high-performing interfaces that feel effortless to use. What
+                started as tweaking websites for fun grew into 3+ years of
+                building enterprise dashboards, revamping legacy code, and
+                crafting clean, scalable solutions with React, TypeScript, and
+                Redux. I’m all about thoughtful design, smooth interactions, and
+                code that’s as elegant under the hood as it looks on screen.
+              </p>
+              <p>
+                When I’m not coding, you’ll probably find me exploring new
+                places or befriending every cat I meet.
+              </p>
+            </Grid>
+          </Grid>
+        </div>
+      </div>
+      {/* About Me Section Ends */}
       {/* Projects Section */}
       <section id="projects" className="projects section">
         <div className="wrapper">
@@ -125,15 +175,15 @@ function App() {
                     <Pill label="MUI" />
                   </div>
                   <p className="project-content">
-                    Developed various platforms, migrated legacy code to modern
-                    React
+                    Modernized Gray Institute’s fitness platform with React dashboards, boosting performance and usability.
                   </p>
                   <a
                     className="btn small-btn secondary-btn"
                     href="https://www.grayinstitute.com/"
                     target="blank"
                   >
-                    <Launch sx={{ fontSize: '1rem', marginRight: '4px' }} /> Visit Website
+                    <Launch sx={{ fontSize: '1rem', marginRight: '4px' }} />{' '}
+                    Visit Website
                   </a>
                 </div>
               </div>
@@ -181,7 +231,8 @@ function App() {
                     href="https://github.com/salonisrokade/portfolio-website"
                     target="blank"
                   >
-                    <GitHub sx={{ fontSize: '1rem', marginRight: '4px' }} /> View Code
+                    <GitHub sx={{ fontSize: '1rem', marginRight: '4px' }} />{' '}
+                    View Code
                   </a>
                 </div>
               </div>
@@ -197,55 +248,55 @@ function App() {
             <p className="section-title">Skills</p>
             <div className="skills-images">
               <div>
-                <Tooltip title="JavaScript">
+                <CustomTooltip title="JavaScript">
                   <img className="large-img" src={jsImg} alt="JavaScript" />
-                </Tooltip>
-                <Tooltip title="React.js">
+                </CustomTooltip>
+                <CustomTooltip title="React.js">
                   <img className="large-img" src={reactJsImg} alt="React.js" />
-                </Tooltip>
-                <Tooltip title="Typescript">
+                </CustomTooltip>
+                <CustomTooltip title="Typescript">
                   <img
                     className="large-img"
                     src={typescriptImg}
                     alt="Typescript"
                   />
-                </Tooltip>
-                <Tooltip title="Redux">
+                </CustomTooltip>
+                <CustomTooltip title="Redux">
                   <img className="large-img" src={reduxImg} alt="Redux" />
-                </Tooltip>
-                <Tooltip title="Next.js">
+                </CustomTooltip>
+                <CustomTooltip title="Next.js">
                   <img className="large-img" src={nextJsImg} alt="Next.js" />
-                </Tooltip>
+                </CustomTooltip>
               </div>
               <div>
-                <Tooltip title="HTML5">
+                <CustomTooltip title="HTML5">
                   <img className="small-img" src={htmlImg} alt="HTML5" />
-                </Tooltip>
-                <Tooltip title="CSS3">
+                </CustomTooltip>
+                <CustomTooltip title="CSS3">
                   <img className="small-img" src={cssImg} alt="CSS3" />
-                </Tooltip>
-                <Tooltip title="Github">
+                </CustomTooltip>
+                <CustomTooltip title="Github">
                   <img className="small-img" src={githubImg} alt="Github" />
-                </Tooltip>
-                <Tooltip title="Tailwind CSS">
+                </CustomTooltip>
+                <CustomTooltip title="Tailwind CSS">
                   <img
                     className="small-img"
                     src={tailwindImg}
                     alt="Tailwind CSS"
                   />
-                </Tooltip>
-                <Tooltip title="Material UI">
+                </CustomTooltip>
+                <CustomTooltip title="Material UI">
                   <img className="small-img" src={muiImg} alt="Material UI" />
-                </Tooltip>
-                <Tooltip title="JavaScript">
+                </CustomTooltip>
+                <CustomTooltip title="JavaScript">
                   <img className="small-img" src={sassImg} alt="SASS" />
-                </Tooltip>
-                <Tooltip title="JavaScript">
+                </CustomTooltip>
+                <CustomTooltip title="JavaScript">
                   <img className="small-img" src={figmaImg} alt="Figma" />
-                </Tooltip>
-                <Tooltip title="JavaScript">
+                </CustomTooltip>
+                <CustomTooltip title="JavaScript">
                   <img className="small-img" src={netlifyImg} alt="Netlify" />
-                </Tooltip>
+                </CustomTooltip>
               </div>
             </div>
           </EnterAnimation>
@@ -253,19 +304,22 @@ function App() {
       </section>
       {/* Skills Section Ends */}
       {/* Experience & Education Section */}
-      <section className="section">
+      <section id="experience" className="section">
         <div className="wrapper">
           <EnterAnimation>
-            <Grid container spacing={2}>
-              <Grid size={{ xs: 12, md: 6 }}>
+            <Grid container spacing={2} marginBottom={'18px'}>
+              <Grid size={{ xs: 12, md: 12 }}>
                 <p className="section-title">Experience</p>
                 <BasicTimeline data={experience} />
               </Grid>
-              <Grid size={{ xs: 12, md: 6 }}>
-                <p className="section-title">Education</p>
-                <BasicTimeline data={education} />
-              </Grid>
             </Grid>
+            <p>👉 Want the detailed version? <a
+                    className="download-link"
+                    href={`${process.env.PUBLIC_URL}/Saloni-R-Resume.pdf`}
+                    target="blank"
+                  >
+                  Download Resume
+                  </a></p>
           </EnterAnimation>
         </div>
       </section>
@@ -273,13 +327,29 @@ function App() {
       {/* </div> */}
       <footer>
         <div>
-        <p>Built with love by <strong>Saloni R</strong> 🩷</p>
-        <span>© 2025 Saloni Rokade. All rights reserved.</span>
+          <p>
+            Built with love by <strong>Saloni R</strong> 🩷
+          </p>
+          <span>© 2025 Saloni Rokade. All rights reserved.</span>
         </div>
         <div>
-          <a href="http://www.linkedin.com/in/saloni-r/" target="_blank" rel="noopener noreferrer"><LinkedIn/></a>
-          <a href="https://github.com/salonisrokade" target="_blank" rel="noopener noreferrer"><GitHub/></a>
-          <a href="mailto:salonirokade119@gmail.com"><EmailOutlined/></a>
+          <a
+            href="http://www.linkedin.com/in/saloni-r/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <LinkedIn />
+          </a>
+          <a
+            href="https://github.com/salonisrokade"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <GitHub />
+          </a>
+          <a href="mailto:salonirokade119@gmail.com">
+            <EmailOutlined />
+          </a>
         </div>
       </footer>
       {/* <ToastContainer/> */}

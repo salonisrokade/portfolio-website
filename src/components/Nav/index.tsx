@@ -17,7 +17,7 @@ export default function Nav() {
   const navLinks = [
     {
       name: 'About Me',
-      link: '#home',
+      link: '#about-me',
     },
     {
       name: 'Projects',
@@ -30,6 +30,10 @@ export default function Nav() {
     {
       name: 'Skills',
       link: '#skills',
+    },
+    {
+      name: 'Experience',
+      link: '#experience',
     },
   ]
   return (
